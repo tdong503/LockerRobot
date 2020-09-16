@@ -8,18 +8,19 @@ import java.util.HashMap;
 public class Locker {
     private int capacity;
     private HashMap<Ticket, Bag> bags = new HashMap<>();
+    private Types lockerType;
 
-
-    public Locker(int capacity) {
+    public Locker(int capacity, Types lockerType) {
         this.capacity = capacity;
+        this.lockerType = lockerType;
     }
 
     public Ticket saveBag(Bag bag) {
-        if(bags.size() == capacity) {
+        if(!this.hasCapacity()) {
             throw new NoCapacityException(this.getClass().getName());
         }
 
-        Ticket ticket = new Ticket(Types.S);
+        Ticket ticket = new Ticket(lockerType);
         bags.put(ticket, bag);
         return ticket;
     }
@@ -31,5 +32,9 @@ public class Locker {
         }
 
         return bag;
+    }
+
+    public boolean hasCapacity() {
+        return bags.size() < capacity;
     }
 }
