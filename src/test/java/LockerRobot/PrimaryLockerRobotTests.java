@@ -49,4 +49,18 @@ public class PrimaryLockerRobotTests {
 
         assertThrows(NoCapacityException.class, () -> primaryLockerRobot.saveBag(bag));
     }
+
+    @Test
+    void should_get_corresponding_bag_when_pick_up_bag_given_a_valid_ticket() {
+        Bag bag = new Bag(Types.M);
+        Locker firstLocker = new Locker(1, lockerType);
+
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(ImmutableList.of(firstLocker));
+
+        Ticket ticket = primaryLockerRobot.saveBag(bag);
+
+        Bag actual = primaryLockerRobot.pickUpBag(ticket);
+
+        assertEquals(bag, actual);
+    }
 }

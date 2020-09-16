@@ -15,4 +15,9 @@ public class PrimaryLockerRobot {
         Locker locker = lockers.stream().filter(Locker::hasCapacity).findFirst().orElseThrow(() -> new NoCapacityException(this.getClass().getName()));
         return locker.saveBag(bag);
     }
+
+    public Bag pickUpBag(Ticket ticket) {
+        Locker locker = lockers.stream().filter(l -> l.isTicketContained(ticket)).findFirst().get();
+        return locker.pickUpBag(ticket);
+    }
 }
