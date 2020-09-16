@@ -36,10 +36,124 @@
 8. 小樱代理用户取完包后，会回收票据吗？
     >小樱会回收，但她自己取包的时候难免也有犯糊涂的时候。
 
-
-
-
-
-
-
- 
+### Tasking
+1. Given S包，一个有空余容量的Locker
+   When Locker存包
+   Then 存包成功，并返回S票据
+2. Given S包，一个没有可用容量的Locker
+   When Locker存包
+   Then 存包失败，提示已满
+3. Given M包，一个PrimaryLockerRobot，管理多个Locker，每个Locker都有可用容量
+   When PrimaryLockerRobot存包
+   Then 存包成功，存到第一个Locker，并返回M票据
+4. Given M包，一个PrimaryLockerRobot，管理多个Locker，只有第一个Locker没有可用容量
+   When PrimaryLockerRobot存包
+   Then 存包成功，存到第二个Locker，并返回M票据
+5. Given M包，一个PrimaryLockerRobot，管理多个Locker，都没有可用容量
+   When PrimaryLockerRobot存包
+   Then 存包失败，提示已满
+6. Given L包，一个SuperLockerRobot，管理多个Locker，第一个Locker的空置率高于其它Locker
+   When SuperLockerRobot存包
+   Then 存包成功，存到第一个Locker，并返回L票据
+7. Given L包，一个SuperLockerRobot，管理多个Locker，第二个Locker的空置率高于其它Locker
+   When SuperLockerRobot存包
+   Then 存包成功，存到第二个Locker，并返回L票据
+8. Given L包，一个SuperLockerRobot，管理多个Locker，第一个Locker和第二个Locker的空置率一样且高于其它Locker
+   When SuperLockerRobot存包
+   Then 存包成功，存到第一个Locker，并返回L票据
+9. Given L包，一个SuperLockerRobot，管理多个Locker，都没有可用容量
+   When SuperLockerRobot存包
+   Then 存包失败，提示已满
+10. Given 一个Locker，一个由Locker存包成功的S票据
+    When Locker取包
+    Then 取包成功，并且是票据对应的包
+11. Given 一个Locker, 一个伪造的S票据
+    When Locker取包
+    Then 取包失败，提示无效票据
+12. Given 一个Locker，一个由PrimaryLockerRobot存包生成的M票据
+    When Locker取包
+    Then 取包失败，提示票据不匹配
+13. Given 一个Locker，一个由SuperLockerRobot存包生成的L票据
+    When Locker取包
+    Then 取包失败，提示票据不匹配
+14. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由PrimaryLockerRobot存包成功的M票据
+    When PrimaryLockerRobot取包
+    Then 取包成功，并且是票据对应的包
+15. Given 一个PrimaryLockerRobot，并且管理一个Locker, 一个伪造的M票据
+    When PrimaryLockerRobot取包
+    Then 取包失败，提示无效票据
+16. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由Locker存包生成的S票据
+    When PrimaryLockerRobot取包
+    Then 取包失败，提示票据不匹配
+17. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由SuperLockerRobot存包生成的L票据
+    When PrimaryLockerRobot取包
+    Then 取包失败，提示票据不匹配
+18. Given 一个SuperLockerRobot，并且管理一个Locker，一个由SuperLockerRobot存包成功的L票据
+    When SuperLockerRobot取包
+    Then 取包成功，并且是票据对应的包
+19. Given 一个SuperLockerRobot，并且管理一个Locker, 一个伪造的M票据
+    When SuperLockerRobot取包
+    Then 取包失败，提示无效票据
+20. Given 一个SuperLockerRobot，并且管理一个Locker，一个由Locker存包生成的S票据
+    When SuperLockerRobot取包
+    Then 取包失败，提示票据不匹配
+21. Given 一个SuperLockerRobot，并且管理一个Locker，一个由PrimaryLockerRobot存包生成的M票据
+    When SuperLockerRobot取包
+    Then 取包失败，提示票据不匹配
+    
+22. Given S包，一个LockerRobotManager，并且管理一个有容量的Locker
+    When LockerRobotManager存包
+    Then 存包成功，并且返回S票据
+23. Given S包，一个LockerRobotManager，并且管理一个没有可用容量的Locker
+    When LockerRobotManager存包
+    Then 存包失败，提示已满
+24. Given M包，一个LockerRobotManager，并且管理一个PrimaryLockerRobot，PrimaryLockerRobot管理一个有容量Locker
+    When LockerRobotManager存包
+    Then 存包成功，并且返回M票据
+25. Given M包，一个LockerRobotManager，并且管理一个PrimaryLockerRobot，PrimaryLockerRobot管理一个没有可用容量Locker
+    When LockerRobotManager存包
+    Then 存包失败，提示已满
+26. Given L包，一个LockerRobotManager，并且管理一个SuperLockerRobot，SuperLockerRobot管理一个有容量Locker
+    When LockerRobotManager存包
+    Then 存包成功，并且返回L票据
+25. Given L包，一个LockerRobotManager，并且管理一个SuperLockerRobot，SuperLockerRobot管理一个没有可用容量Locker
+    When LockerRobotManager存包
+    Then 存包失败，提示已满
+26. Given 一个LockerRobotManager，并且管理一个Locker，一个由LockerRobotManager存包成功的S票据
+    When LockerRobotManager取包
+    Then 取包成功，并且是票据对应的包
+27. Given 一个LockerRobotManager，并且管理一个Locker, 一个伪造的S票据
+    When LockerRobotManager取包
+    Then 取包失败，提示无效票据
+28. Given 一个LockerRobotManager，并且管理一个PrimaryLockerRobot，PrimaryLockerRobot管理一个Locker，一个由LockerRobotManager存包生成的M票据
+    When LockerRobotManager取包
+    Then 取包成功，并且是票据对应的包
+29. Given 一个LockerRobotManager，并且管理一个PrimaryLockerRobot，PrimaryLockerRobot管理一个Locker，一个伪造的M票据
+    When LockerRobotManager取包
+    Then 取包失败，提示无效票据
+30. Given 一个LockerRobotManager，并且管理一个SuperLockerRobot，SuperLockerRobot管理一个Locker，一个由LockerRobotManager存包生成的L票据
+    When LockerRobotManager取包
+    Then 取包成功，并且是票据对应的包
+31. Given 一个LockerRobotManager，并且管理一个SuperLockerRobot，SuperLockerRobot管理一个Locker，一个伪造的L票据
+    When LockerRobotManager取包
+    Then 取包失败，提示无效票据
+    
+32. Given 一个LockerRobotManager，一个M的Locker
+    When 设置给LockerRobotManager
+    Then 提示设置失败
+33. Given 一个LockerRobotManager，一个L的Locker
+    When 设置给LockerRobotManager
+    Then 提示设置失败
+34. Given 一个PrimaryLockerRobot，一个S的Locker
+    When 设置给PrimaryLockerRobot
+    Then 提示设置失败
+35. Given 一个PrimaryLockerRobot，一个L的Locker
+    When 设置给PrimaryLockerRobot
+    Then 提示设置失败
+36. Given 一个SuperLockerRobot，一个S的Locker
+    When 设置SuperLockerRobot
+    Then 提示设置失败
+37. Given 一个SuperLockerRobot，一个M的Locker
+    When 设置SuperLockerRobot
+    Then 提示设置失败
+    
