@@ -43,57 +43,60 @@
 2. Given S包，一个没有可用容量的Locker
    When Locker存包
    Then 存包失败，提示已满
-3. Given M包，一个PrimaryLockerRobot，管理多个Locker，每个Locker都有可用容量
+3. Given 一个Locker，一个由Locker存包成功的S票据
+   When Locker取包
+   Then 取包成功，并且是票据对应的包
+4. Given 一个Locker, 一个伪造的S票据
+   When Locker取包
+   Then 取包失败，提示无效票据
+    
+5. Given M包，一个PrimaryLockerRobot，管理多个Locker，每个Locker都有可用容量
    When PrimaryLockerRobot存包
    Then 存包成功，存到第一个Locker，并返回M票据
-4. Given M包，一个PrimaryLockerRobot，管理多个Locker，只有第一个Locker没有可用容量
+6. Given M包，一个PrimaryLockerRobot，管理多个Locker，只有第一个Locker没有可用容量
    When PrimaryLockerRobot存包
    Then 存包成功，存到第二个Locker，并返回M票据
-5. Given M包，一个PrimaryLockerRobot，管理多个Locker，都没有可用容量
+7. Given M包，一个PrimaryLockerRobot，管理多个Locker，都没有可用容量
    When PrimaryLockerRobot存包
    Then 存包失败，提示已满
-6. Given L包，一个SuperLockerRobot，管理多个Locker，第一个Locker的空置率高于其它Locker
-   When SuperLockerRobot存包
-   Then 存包成功，存到第一个Locker，并返回L票据
-7. Given L包，一个SuperLockerRobot，管理多个Locker，第二个Locker的空置率高于其它Locker
-   When SuperLockerRobot存包
-   Then 存包成功，存到第二个Locker，并返回L票据
-8. Given L包，一个SuperLockerRobot，管理多个Locker，第一个Locker和第二个Locker的空置率一样且高于其它Locker
-   When SuperLockerRobot存包
-   Then 存包成功，存到第一个Locker，并返回L票据
-9. Given L包，一个SuperLockerRobot，管理多个Locker，都没有可用容量
-   When SuperLockerRobot存包
-   Then 存包失败，提示已满
-10. Given 一个Locker，一个由Locker存包成功的S票据
-    When Locker取包
-    Then 取包成功，并且是票据对应的包
-11. Given 一个Locker, 一个伪造的S票据
-    When Locker取包
-    Then 取包失败，提示无效票据
-12. Given 一个Locker，一个由PrimaryLockerRobot存包生成的M票据
-    When Locker取包
-    Then 取包失败，提示票据不匹配
-13. Given 一个Locker，一个由SuperLockerRobot存包生成的L票据
-    When Locker取包
-    Then 取包失败，提示票据不匹配
-14. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由PrimaryLockerRobot存包成功的M票据
-    When PrimaryLockerRobot取包
-    Then 取包成功，并且是票据对应的包
-15. Given 一个PrimaryLockerRobot，并且管理一个Locker, 一个伪造的M票据
-    When PrimaryLockerRobot取包
-    Then 取包失败，提示无效票据
-16. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由Locker存包生成的S票据
-    When PrimaryLockerRobot取包
-    Then 取包失败，提示票据不匹配
-17. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由SuperLockerRobot存包生成的L票据
-    When PrimaryLockerRobot取包
-    Then 取包失败，提示票据不匹配
-18. Given 一个SuperLockerRobot，并且管理一个Locker，一个由SuperLockerRobot存包成功的L票据
+8. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由PrimaryLockerRobot存包成功的M票据
+   When PrimaryLockerRobot取包
+   Then 取包成功，并且是票据对应的包
+9. Given 一个PrimaryLockerRobot，并且管理一个Locker, 一个伪造的M票据
+   When PrimaryLockerRobot取包
+   Then 取包失败，提示无效票据
+    
+10. Given L包，一个SuperLockerRobot，管理多个Locker，第一个Locker的空置率高于其它Locker
+    When SuperLockerRobot存包
+    Then 存包成功，存到第一个Locker，并返回L票据
+11. Given L包，一个SuperLockerRobot，管理多个Locker，第二个Locker的空置率高于其它Locker
+    When SuperLockerRobot存包
+    Then 存包成功，存到第二个Locker，并返回L票据
+12. Given L包，一个SuperLockerRobot，管理多个Locker，第一个Locker和第二个Locker的空置率一样且高于其它Locker
+    When SuperLockerRobot存包
+    Then 存包成功，存到第一个Locker，并返回L票据
+13. Given L包，一个SuperLockerRobot，管理多个Locker，都没有可用容量
+    When SuperLockerRobot存包
+    Then 存包失败，提示已满
+14. Given 一个SuperLockerRobot，并且管理一个Locker，一个由SuperLockerRobot存包成功的L票据
     When SuperLockerRobot取包
     Then 取包成功，并且是票据对应的包
-19. Given 一个SuperLockerRobot，并且管理一个Locker, 一个伪造的M票据
+15. Given 一个SuperLockerRobot，并且管理一个Locker, 一个伪造的M票据
     When SuperLockerRobot取包
     Then 取包失败，提示无效票据
+    
+16. Given 一个Locker，一个由PrimaryLockerRobot存包生成的M票据
+    When Locker取包
+    Then 取包失败，提示票据不匹配
+17. Given 一个Locker，一个由SuperLockerRobot存包生成的L票据
+    When Locker取包
+    Then 取包失败，提示票据不匹配
+18. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由Locker存包生成的S票据
+    When PrimaryLockerRobot取包
+    Then 取包失败，提示票据不匹配
+19. Given 一个PrimaryLockerRobot，并且管理一个Locker，一个由SuperLockerRobot存包生成的L票据
+    When PrimaryLockerRobot取包
+    Then 取包失败，提示票据不匹配
 20. Given 一个SuperLockerRobot，并且管理一个Locker，一个由Locker存包生成的S票据
     When SuperLockerRobot取包
     Then 取包失败，提示票据不匹配
