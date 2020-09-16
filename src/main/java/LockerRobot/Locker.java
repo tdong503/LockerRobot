@@ -41,4 +41,8 @@ public class Locker {
     public boolean isTicketContained(Ticket ticket) {
         return bags.containsKey(ticket);
     }
+
+    public int freeCapacityRate() {
+        return bags.size() / capacity;
+    }
 }
