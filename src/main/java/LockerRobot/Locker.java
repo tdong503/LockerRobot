@@ -1,5 +1,7 @@
 package LockerRobot;
 
+import LockerRobot.Exceptions.NoCapacityException;
+
 import java.util.HashMap;
 
 public class Locker {
@@ -12,7 +14,11 @@ public class Locker {
     }
 
     public Ticket saveBag(Bag bag) {
-        Ticket ticket = new Ticket();
+        if(bags.size() == capacity) {
+            throw new NoCapacityException(this.getClass().getName());
+        }
+
+        Ticket ticket = new Ticket(Types.S);
         bags.put(ticket, bag);
         return ticket;
     }
