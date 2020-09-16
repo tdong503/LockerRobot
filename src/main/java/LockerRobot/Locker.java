@@ -22,4 +22,8 @@ public class Locker {
         bags.put(ticket, bag);
         return ticket;
     }
+
+    public Bag pickUpBag(Ticket ticket) {
+        return bags.get(ticket);
+    }
 }

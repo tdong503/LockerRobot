@@ -26,5 +26,15 @@ public class LockerTests {
         assertThrows(NoCapacityException.class, () -> locker.saveBag(bag));
     }
 
+    @Test
+    void should_get_corresponding_bag_when_pick_up_bag_given_a_valid_ticket() {
+        Bag bag = new Bag(Types.S);
+        Locker locker = new Locker(1);
 
+        Ticket ticket = locker.saveBag(bag);
+
+        Bag actual = locker.pickUpBag(ticket);
+
+        assertEquals(bag, actual);
+    }
 }
