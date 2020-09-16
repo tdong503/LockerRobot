@@ -1,5 +1,6 @@
 package LockerRobot;
 
+import LockerRobot.Exceptions.InvalidTicketException;
 import LockerRobot.Exceptions.NoCapacityException;
 
 import java.util.HashMap;
@@ -24,6 +25,11 @@ public class Locker {
     }
 
     public Bag pickUpBag(Ticket ticket) {
-        return bags.get(ticket);
+        Bag bag = bags.get(ticket);
+        if(bag == null) {
+            throw new InvalidTicketException(ticket.getClass().getName());
+        }
+
+        return bag;
     }
 }
