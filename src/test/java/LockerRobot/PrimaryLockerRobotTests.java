@@ -23,4 +23,19 @@ public class PrimaryLockerRobotTests {
         assertEquals(Types.M, actual.getTicketType());
         assertEquals(bag, firstLocker.pickUpBag(actual));
     }
+
+    @Test
+    void should_save_bag_in_2nd_locker_and_return_M_ticket_when_save_bag_given_a_M_bag_and_only_1st_locker_has_no_capacity() {
+        Bag bag = new Bag(Types.M);
+        Locker firstLocker = new Locker(0, lockerType);
+        Locker secondLocker = new Locker(1, lockerType);
+
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(ImmutableList.of(firstLocker, secondLocker));
+
+        Ticket actual = primaryLockerRobot.saveBag(bag);
+
+        assertNotNull(actual);
+        assertEquals(Types.M, actual.getTicketType());
+        assertEquals(bag, secondLocker.pickUpBag(actual));
+    }
 }
