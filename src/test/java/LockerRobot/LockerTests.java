@@ -1,6 +1,6 @@
 package LockerRobot;
 
-import LockerRobot.Exceptions.InvalidTicketException;
+import LockerRobot.Exceptions.FakeTicketException;
 import LockerRobot.Exceptions.NoCapacityException;
 import org.junit.jupiter.api.Test;
 
@@ -42,13 +42,13 @@ public class LockerTests {
     }
 
     @Test
-    void should_throw_error_when_pick_up_bag_given_a_invalid_ticket() {
+    void should_throw_error_when_pick_up_bag_given_a_fake_ticket() {
         Bag bag = new Bag(Types.S);
         Locker locker = new Locker(1, lockerType);
         locker.saveBag(bag);
 
         Ticket ticket = new Ticket(Types.S);
 
-        assertThrows(InvalidTicketException.class, () -> locker.pickUpBag(ticket));
+        assertThrows(FakeTicketException.class, () -> locker.pickUpBag(ticket));
     }
 }

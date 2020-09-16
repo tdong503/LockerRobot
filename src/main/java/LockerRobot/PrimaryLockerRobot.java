@@ -1,5 +1,6 @@
 package LockerRobot;
 
+import LockerRobot.Exceptions.FakeTicketException;
 import LockerRobot.Exceptions.NoCapacityException;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class PrimaryLockerRobot {
     }
 
     public Bag pickUpBag(Ticket ticket) {
-        Locker locker = lockers.stream().filter(l -> l.isTicketContained(ticket)).findFirst().get();
+        Locker locker = lockers.stream().filter(l -> l.isTicketContained(ticket)).findFirst().orElseThrow(() -> new FakeTicketException(this.getClass().getName()));
         return locker.pickUpBag(ticket);
     }
 }
