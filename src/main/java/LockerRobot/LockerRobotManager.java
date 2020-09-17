@@ -1,5 +1,7 @@
 package LockerRobot;
 
+import LockerRobot.Exceptions.NoCapacityException;
+
 import java.util.List;
 
 public class LockerRobotManager {
@@ -10,7 +12,7 @@ public class LockerRobotManager {
     }
 
     public Ticket saveBag(Bag bag) {
-        Locker locker = lockers.stream().filter(Locker::hasCapacity).findFirst().get();
+        Locker locker = lockers.stream().filter(Locker::hasCapacity).findFirst().orElseThrow(() -> new NoCapacityException(this.getClass().getName()));
         return locker.saveBag(bag);
     }
 }
