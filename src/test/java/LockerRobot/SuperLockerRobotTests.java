@@ -66,4 +66,18 @@ public class SuperLockerRobotTests {
 
         assertThrows(NoCapacityException.class, () -> superLockerRobot.saveBag(bag));
     }
+
+    @Test
+    void should_get_corresponding_bag_when_pick_up_bag_given_a_valid_ticket() {
+        Bag bag = new Bag(Types.L);
+        Locker firstLocker = new Locker(1, lockerType);
+
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(firstLocker));
+
+        Ticket ticket = superLockerRobot.saveBag(bag);
+
+        Bag actual = superLockerRobot.pickUpBag(ticket);
+
+        assertEquals(bag, actual);
+    }
 }
