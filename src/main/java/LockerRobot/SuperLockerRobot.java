@@ -2,12 +2,14 @@ package LockerRobot;
 
 import LockerRobot.Exceptions.FakeTicketException;
 import LockerRobot.Exceptions.NoCapacityException;
+import LockerRobot.Exceptions.TypeNotMatchedException;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class SuperLockerRobot {
     private List<Locker> lockers;
+    private Types robotTypes = Types.L;
 
     public SuperLockerRobot(List<Locker> lockers) {
         this.lockers = lockers;
@@ -19,6 +21,10 @@ public class SuperLockerRobot {
     }
 
     public Bag pickUpBag(Ticket ticket) {
+        if(ticket.getTicketType() != robotTypes) {
+            throw new TypeNotMatchedException(this.getClass().getName());
+        }
+
         Locker locker = lockers.stream().filter(l -> l.isTicketContained(ticket)).findFirst().orElseThrow(() -> new FakeTicketException(this.getClass().getName()));
         return locker.pickUpBag(ticket);
     }
