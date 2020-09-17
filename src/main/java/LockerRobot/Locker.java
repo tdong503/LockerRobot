@@ -2,6 +2,7 @@ package LockerRobot;
 
 import LockerRobot.Exceptions.FakeTicketException;
 import LockerRobot.Exceptions.NoCapacityException;
+import LockerRobot.Exceptions.TypeNotMatchedException;
 
 import java.util.HashMap;
 
@@ -16,7 +17,7 @@ public class Locker {
     }
 
     public Ticket saveBag(Bag bag) {
-        if(!this.hasCapacity()) {
+        if (!this.hasCapacity()) {
             throw new NoCapacityException(this.getClass().getName());
         }
 
@@ -26,8 +27,12 @@ public class Locker {
     }
 
     public Bag pickUpBag(Ticket ticket) {
+        if (ticket.getTicketType() != this.lockerType) {
+            throw new TypeNotMatchedException(this.getClass().getName());
+        }
+
         Bag bag = bags.get(ticket);
-        if(bag == null) {
+        if (bag == null) {
             throw new FakeTicketException(ticket.getClass().getName());
         }
 
