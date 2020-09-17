@@ -1,5 +1,6 @@
 package LockerRobot;
 
+import LockerRobot.Exceptions.FakeTicketException;
 import LockerRobot.Exceptions.NoCapacityException;
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
@@ -79,5 +80,18 @@ public class SuperLockerRobotTests {
         Bag actual = superLockerRobot.pickUpBag(ticket);
 
         assertEquals(bag, actual);
+    }
+
+    @Test
+    void should_not_get_bag_and_return_error_when_pick_up_bag_given_a_fake_ticket() {
+        Bag bag = new Bag(Types.L);
+        Locker firstLocker = new Locker(1, lockerType);
+
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(firstLocker));
+        superLockerRobot.saveBag(bag);
+
+        Ticket ticket = new Ticket(Types.M);
+
+        assertThrows(FakeTicketException.class, () -> superLockerRobot.pickUpBag(ticket));
     }
 }
