@@ -1,10 +1,10 @@
 package LockerRobot;
 
+import LockerRobot.Exceptions.NoCapacityException;
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SuperLockerRobotTests {
     private Types lockerType = Types.L;
@@ -54,5 +54,16 @@ public class SuperLockerRobotTests {
         assertNotNull(actual);
         assertEquals(Types.L, actual.getTicketType());
         assertEquals(bag, firstLocker.pickUpBag(actual));
+    }
+
+    @Test
+    void should_not_save_bag_and_return_error_when_save_bag_given_all_lockers_has_no_capacity() {
+        Bag bag = new Bag(Types.L);
+        Locker firstLocker = new Locker(0, lockerType);
+        Locker secondLocker = new Locker(0, lockerType);
+
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(firstLocker, secondLocker));
+
+        assertThrows(NoCapacityException.class, () -> superLockerRobot.saveBag(bag));
     }
 }
