@@ -27,4 +27,8 @@ public class PrimaryLockerRobot {
         Locker locker = lockers.stream().filter(l -> l.isTicketContained(ticket)).findFirst().orElseThrow(() -> new FakeTicketException(this.getClass().getName()));
         return locker.pickUpBag(ticket);
     }
+
+    public boolean hasCapacity() {
+        return lockers.stream().anyMatch(Locker::hasCapacity);
+    }
 }
