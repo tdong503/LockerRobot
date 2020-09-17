@@ -90,7 +90,7 @@ public class SuperLockerRobotTests {
         SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(firstLocker));
         superLockerRobot.saveBag(bag);
 
-        Ticket ticket = new Ticket(Types.M);
+        Ticket ticket = new Ticket(Types.L);
 
         assertThrows(FakeTicketException.class, () -> superLockerRobot.pickUpBag(ticket));
     }

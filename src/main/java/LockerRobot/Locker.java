@@ -6,7 +6,7 @@ import LockerRobot.Exceptions.TypeNotMatchedException;
 
 import java.util.HashMap;
 
-public class Locker {
+public class Locker implements Storable {
     private int capacity;
     private HashMap<Ticket, Bag> bags = new HashMap<>();
     private Types lockerType;
@@ -16,6 +16,7 @@ public class Locker {
         this.lockerType = lockerType;
     }
 
+    @Override
     public Ticket saveBag(Bag bag) {
         if (!this.hasCapacity()) {
             throw new NoCapacityException(this.getClass().getName());
@@ -26,6 +27,7 @@ public class Locker {
         return ticket;
     }
 
+    @Override
     public Bag pickUpBag(Ticket ticket) {
         if (ticket.getTicketType() != this.lockerType) {
             throw new TypeNotMatchedException(this.getClass().getName());
@@ -39,10 +41,12 @@ public class Locker {
         return bag;
     }
 
+    @Override
     public boolean hasCapacity() {
         return bags.size() < capacity;
     }
 
+    @Override
     public boolean isTicketContained(Ticket ticket) {
         return bags.containsKey(ticket);
     }
