@@ -46,4 +46,16 @@ public class LockerRobotManagerTests {
 
         assertThrows(NoCapacityException.class, () -> lockerRobotManager.saveBag(bag));
     }
+
+    @Test
+    void should_save_bag_and_return_L_ticket_when_save_bag_given_a_L_bag_and_a_SuperLockerRobot_has_capacity() {
+        Bag bag = new Bag(Types.L);
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(new Locker(1, Types.L)));
+        LockerRobotManager lockerRobotManager = new LockerRobotManager(ImmutableList.of(superLockerRobot));
+
+        Ticket actual = lockerRobotManager.saveBag(bag);
+
+        assertNotNull(actual);
+        assertEquals(Types.L, actual.getTicketType());
+    }
 }
