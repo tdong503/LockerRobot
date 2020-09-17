@@ -43,6 +43,6 @@ public class Locker {
     }
 
     public int freeCapacityRate() {
-        return bags.size() / capacity;
+        return (capacity - bags.size()) / capacity;
     }
 }
