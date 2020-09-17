@@ -39,4 +39,15 @@ public class ValidateTests {
 
         assertThrows(TypeNotMatchedException.class, () -> primaryLockerRobot.pickUpBag(ticket));
     }
+
+    @Test
+    void should_not_get_bag_and_throw_error_when_PrimaryLockerRobot_get_bag_given_a_L_ticket_generated_by_SuperLockerRobot() {
+        Bag bag = new Bag(Types.L);
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(new Locker(1, Types.L)));
+        Ticket ticket = superLockerRobot.saveBag(bag);
+
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(ImmutableList.of(new Locker(1, Types.M)));
+
+        assertThrows(TypeNotMatchedException.class, () -> primaryLockerRobot.pickUpBag(ticket));
+    }
 }
