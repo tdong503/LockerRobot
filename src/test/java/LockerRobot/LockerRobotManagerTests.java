@@ -19,7 +19,7 @@ public class LockerRobotManagerTests {
     }
 
     @Test
-    void should_not_save_bag_when_save_bag_given_a_S_bag_and_locker_has_no_capacity() {
+    void should_not_save_bag_and_return_error_when_save_bag_given_a_S_bag_and_locker_has_no_capacity() {
         Bag bag = new Bag(Types.S);
         LockerRobotManager lockerRobotManager = new LockerRobotManager(ImmutableList.of(new Locker(0, Types.S)));
 
@@ -36,5 +36,14 @@ public class LockerRobotManagerTests {
 
         assertNotNull(actual);
         assertEquals(Types.M, actual.getTicketType());
+    }
+
+    @Test
+    void should_not_save_bag_and_return_error_when_save_bag_given_a_M_bag_and_a_PrimaryLockerRobot_has_no_capacity() {
+        Bag bag = new Bag(Types.M);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(ImmutableList.of(new Locker(0, Types.M)));
+        LockerRobotManager lockerRobotManager = new LockerRobotManager(ImmutableList.of(primaryLockerRobot));
+
+        assertThrows(NoCapacityException.class, () -> lockerRobotManager.saveBag(bag));
     }
 }
