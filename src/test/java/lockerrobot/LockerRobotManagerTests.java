@@ -112,4 +112,18 @@ class LockerRobotManagerTests {
         assertEquals(Types.L, actual.getTicketType());
         assertEquals(bag, superLockerRobot.pickUpBag(actual));
     }
+
+    @Test
+    void should_get_corresponding_bag_when_pick_up_bag_given_a_locker_and_a_valid_ticket_generated_by_locker() {
+        Bag bag = new Bag(Types.S);
+        Locker locker = new Locker(1, Types.S);
+
+        LockerRobotManager lockerRobotManager = new LockerRobotManager(ImmutableList.of(locker));
+
+        Ticket ticket = lockerRobotManager.saveBag(bag);
+
+        Bag actual = lockerRobotManager.pickUpBag(ticket);
+
+        assertEquals(bag, actual);
+    }
 }
