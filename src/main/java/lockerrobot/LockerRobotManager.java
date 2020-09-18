@@ -27,7 +27,7 @@ public class LockerRobotManager {
     private void validateSetup(List<Storable> storeEquipments) {
         for (Storable storable :
                 storeEquipments) {
-            if (storable.getType() != Types.S) {
+            if (storable.getClass().equals(Locker.class) && storable.getType() != Types.S) {
                 throw new SetupNotMatchedException(this.getClass().getName());
             }
         }
