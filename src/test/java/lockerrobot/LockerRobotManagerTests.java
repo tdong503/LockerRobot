@@ -63,7 +63,7 @@ class LockerRobotManagerTests {
     @Test
     void should_not_save_bag_and_return_error_when_save_bag_given_a_L_bag_and_a_SuperLockerRobot_has_no_capacity() {
         Bag bag = new Bag(Types.L);
-        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(new Locker(0, Types.M)));
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(new Locker(0, Types.L)));
         LockerRobotManager lockerRobotManager = new LockerRobotManager(ImmutableList.of(superLockerRobot));
 
         assertThrows(NoCapacityException.class, () -> lockerRobotManager.saveBag(bag));

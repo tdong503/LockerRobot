@@ -102,4 +102,13 @@ class ValidateTests {
 
         assertThrows(SetupNotMatchedException.class, () -> new PrimaryLockerRobot(lockers));
     }
+
+    @Test
+    void should_throw_error_when_setup_PrimaryLockerRobot_given_a_L_locker() {
+        Locker locker = new Locker(1, Types.L);
+
+        List<Locker> lockers = ImmutableList.of(locker);
+
+        assertThrows(SetupNotMatchedException.class, () -> new PrimaryLockerRobot(lockers));
+    }
 }
