@@ -147,19 +147,19 @@
 35. Given 一个LockerRobotManager，一个M的Locker
     When 设置给LockerRobotManager
     Then 提示设置失败
-38. Given 一个LockerRobotManager，一个L的Locker
+36. Given 一个LockerRobotManager，一个L的Locker
     When 设置给LockerRobotManager
     Then 提示设置失败
-39. Given 一个PrimaryLockerRobot，一个S的Locker
+37. Given 一个PrimaryLockerRobot，一个S的Locker
     When 设置给PrimaryLockerRobot
     Then 提示设置失败
-40. Given 一个PrimaryLockerRobot，一个L的Locker
+38. Given 一个PrimaryLockerRobot，一个L的Locker
     When 设置给PrimaryLockerRobot
     Then 提示设置失败
-41. Given 一个SuperLockerRobot，一个S的Locker
+39. Given 一个SuperLockerRobot，一个S的Locker
     When 设置SuperLockerRobot
     Then 提示设置失败
-42. Given 一个SuperLockerRobot，一个M的Locker
+40. Given 一个SuperLockerRobot，一个M的Locker
     When 设置SuperLockerRobot
     Then 提示设置失败
     

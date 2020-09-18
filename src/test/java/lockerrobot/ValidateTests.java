@@ -1,5 +1,6 @@
 package lockerrobot;
 
+import lockerrobot.Exceptions.SetupNotMatchedException;
 import lockerrobot.Exceptions.TypeNotMatchedException;
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
@@ -71,5 +72,12 @@ class ValidateTests {
         SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(new Locker(1, Types.L)));
 
         assertThrows(TypeNotMatchedException.class, () -> superLockerRobot.pickUpBag(ticket));
+    }
+
+    @Test
+    void should_throw_error_when_setup_LockerRobotManager_given_a_LockerRobotManager_and_a_M_locker() {
+        Locker locker = new Locker(1, Types.M);
+
+        assertThrows(SetupNotMatchedException.class, () -> new LockerRobotManager(ImmutableList.of(locker)));
     }
 }

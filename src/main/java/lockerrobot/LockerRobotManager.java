@@ -2,7 +2,7 @@ package lockerrobot;
 
 import lockerrobot.Exceptions.FakeTicketException;
 import lockerrobot.Exceptions.NoCapacityException;
-import lockerrobot.Exceptions.TypeNotMatchedException;
+import lockerrobot.Exceptions.SetupNotMatchedException;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ public class LockerRobotManager {
     private final List<Storable> storeEquipments;
 
     public LockerRobotManager(List<Storable> storeEquipments) {
+        validateSetup(storeEquipments);
         this.storeEquipments = storeEquipments;
     }
 
@@ -21,5 +22,14 @@ public class LockerRobotManager {
     public Bag pickUpBag(Ticket ticket) {
         Storable locker = storeEquipments.stream().filter(l -> l.isTicketContained(ticket)).findFirst().orElseThrow(() -> new FakeTicketException(this.getClass().getName()));
         return locker.pickUpBag(ticket);
+    }
+
+    private void validateSetup(List<Storable> storeEquipments) {
+        for (Storable storable :
+                storeEquipments) {
+            if (storable.getType() != Types.S) {
+                throw new SetupNotMatchedException(this.getClass().getName());
+            }
+        }
     }
 }
