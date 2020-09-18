@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PrimaryLockerRobotTests {
-    private Types lockerType = Types.M;
+class PrimaryLockerRobotTests {
+    private final Types lockerType = Types.M;
 
     @Test
     void should_save_bag_in_1st_locker_and_return_M_ticket_when_save_bag_given_a_M_bag_and_all_lockers_has_capacity() {

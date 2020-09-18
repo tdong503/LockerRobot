@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SuperLockerRobotTests {
-    private Types lockerType = Types.L;
+class SuperLockerRobotTests {
+    private final Types lockerType = Types.L;
 
     @Test
     void should_save_bag_in_has_most_free_capacity_locker_and_return_L_ticket_when_save_bag_given_a_L_bag_and_all_lockers_has_capacity_but_1st_has_most_free_capacity() {

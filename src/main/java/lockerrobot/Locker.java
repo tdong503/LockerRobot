@@ -7,9 +7,9 @@ import lockerrobot.Exceptions.TypeNotMatchedException;
 import java.util.HashMap;
 
 public class Locker implements Storable {
-    private int capacity;
-    private HashMap<Ticket, Bag> bags = new HashMap<>();
-    private Types lockerType;
+    private final int capacity;
+    private final HashMap<Ticket, Bag> bags = new HashMap<>();
+    private final Types lockerType;
 
     public Locker(int capacity, Types lockerType) {
         this.capacity = capacity;

@@ -5,7 +5,7 @@ import lockerrobot.Exceptions.NoCapacityException;
 import java.util.List;
 
 public class LockerRobotManager {
-    private List<Storable> storeEquipments;
+    private final List<Storable> storeEquipments;
 
     public LockerRobotManager(List<Storable> storeEquipments) {
         this.storeEquipments = storeEquipments;

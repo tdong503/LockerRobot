@@ -7,14 +7,12 @@ import java.util.List;
 
 public abstract class LockerRobotBase implements Storable {
     protected List<Locker> lockers;
-    private Types robotType;
+    private final Types robotType;
 
     public LockerRobotBase(List<Locker> lockers, Types robotType) {
         this.lockers = lockers;
         this.robotType = robotType;
     }
-
-    public abstract Ticket saveBag(Bag bag);
 
     public Bag pickUpBag(Ticket ticket) {
         if(ticket.getTicketType() != this.robotType) {

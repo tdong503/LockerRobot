@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ValidateTests {
+class ValidateTests {
     @Test
     void should_not_get_bag_and_throw_error_when_locker_get_bag_given_a_M_ticker_generated_by_PrimaryLockerRobot() {
         Bag bag = new Bag(Types.M);

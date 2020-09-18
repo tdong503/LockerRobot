@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LockerTests {
+class LockerTests {
 
-    private Types lockerType = Types.S;
+    private final Types lockerType = Types.S;
 
     @Test
     void should_save_bag_and_return_S_ticket_when_save_bag_given_a_S_bag_and_locker_has_capacity() {
