@@ -1,4 +1,4 @@
-package LockerRobot;
+package lockerrobot;
 
 public class Ticket {
     private Types ticketType;

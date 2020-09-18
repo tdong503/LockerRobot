@@ -1,8 +1,8 @@
-package LockerRobot;
+package lockerrobot;
 
-import LockerRobot.Exceptions.FakeTicketException;
-import LockerRobot.Exceptions.NoCapacityException;
-import LockerRobot.Exceptions.TypeNotMatchedException;
+import lockerrobot.Exceptions.FakeTicketException;
+import lockerrobot.Exceptions.NoCapacityException;
+import lockerrobot.Exceptions.TypeNotMatchedException;
 
 import java.util.HashMap;
 

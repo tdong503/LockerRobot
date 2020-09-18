@@ -1,4 +1,4 @@
-package LockerRobot;
+package lockerrobot;
 
 public interface Storable {
     Ticket saveBag(Bag bag);

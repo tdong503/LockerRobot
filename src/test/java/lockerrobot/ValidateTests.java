@@ -1,6 +1,6 @@
-package LockerRobot;
+package lockerrobot;
 
-import LockerRobot.Exceptions.TypeNotMatchedException;
+import lockerrobot.Exceptions.TypeNotMatchedException;
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
 

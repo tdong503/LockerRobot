@@ -1,6 +1,6 @@
-package LockerRobot.Exceptions;
+package lockerrobot.Exceptions;
 
-import static LockerRobot.Exceptions.ErrorMessages.NO_CAPACITY;
+import static lockerrobot.Exceptions.ErrorMessages.NO_CAPACITY;
 
 public class NoCapacityException extends RuntimeException {
     public NoCapacityException(String message) {

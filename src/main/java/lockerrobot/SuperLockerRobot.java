@@ -1,6 +1,6 @@
-package LockerRobot;
+package lockerrobot;
 
-import LockerRobot.Exceptions.NoCapacityException;
+import lockerrobot.Exceptions.NoCapacityException;
 
 import java.util.Comparator;
 import java.util.List;

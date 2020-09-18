@@ -1,7 +1,7 @@
-package LockerRobot;
+package lockerrobot;
 
-import LockerRobot.Exceptions.FakeTicketException;
-import LockerRobot.Exceptions.NoCapacityException;
+import lockerrobot.Exceptions.FakeTicketException;
+import lockerrobot.Exceptions.NoCapacityException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

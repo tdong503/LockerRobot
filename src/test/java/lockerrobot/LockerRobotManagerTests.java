@@ -1,6 +1,6 @@
-package LockerRobot;
+package lockerrobot;
 
-import LockerRobot.Exceptions.NoCapacityException;
+import lockerrobot.Exceptions.NoCapacityException;
 import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
 

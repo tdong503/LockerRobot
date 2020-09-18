@@ -1,4 +1,4 @@
-package LockerRobot.Exceptions;
+package lockerrobot.Exceptions;
 
 public class ErrorMessages {
     public static final String NO_CAPACITY = ": there is no storage.";

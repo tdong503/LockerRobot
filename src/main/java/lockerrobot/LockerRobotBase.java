@@ -1,7 +1,7 @@
-package LockerRobot;
+package lockerrobot;
 
-import LockerRobot.Exceptions.FakeTicketException;
-import LockerRobot.Exceptions.TypeNotMatchedException;
+import lockerrobot.Exceptions.FakeTicketException;
+import lockerrobot.Exceptions.TypeNotMatchedException;
 
 import java.util.List;
 

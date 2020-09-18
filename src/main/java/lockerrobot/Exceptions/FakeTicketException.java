@@ -1,6 +1,6 @@
-package LockerRobot.Exceptions;
+package lockerrobot.Exceptions;
 
-import static LockerRobot.Exceptions.ErrorMessages.FAKE_TICKET;
+import static lockerrobot.Exceptions.ErrorMessages.FAKE_TICKET;
 
 public class FakeTicketException extends RuntimeException {
     public FakeTicketException(String message) {

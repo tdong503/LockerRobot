@@ -1,6 +1,6 @@
-package LockerRobot.Exceptions;
+package lockerrobot.Exceptions;
 
-import static LockerRobot.Exceptions.ErrorMessages.NOT_MATCHED_TICKET;
+import static lockerrobot.Exceptions.ErrorMessages.NOT_MATCHED_TICKET;
 
 public class TypeNotMatchedException extends RuntimeException {
     public TypeNotMatchedException(String message) {
