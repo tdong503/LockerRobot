@@ -12,7 +12,7 @@ public class LockerRobotManager {
     }
 
     public Ticket saveBag(Bag bag) {
-        Storable locker = storeEquipments.stream().filter(Storable::hasCapacity).findFirst().orElseThrow(() -> new NoCapacityException(this.getClass().getName()));
+        Storable locker = storeEquipments.stream().filter(l -> l.hasCapacity() && l.getType().equals(bag.getTypes())).findFirst().orElseThrow(() -> new NoCapacityException(this.getClass().getName()));
         return locker.saveBag(bag);
     }
 }

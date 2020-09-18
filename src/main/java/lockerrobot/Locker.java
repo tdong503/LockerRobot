@@ -51,6 +51,11 @@ public class Locker implements Storable {
         return bags.containsKey(ticket);
     }
 
+    @Override
+    public Types getType() {
+        return this.lockerType;
+    }
+
     public int freeCapacityRate() {
         return (capacity - bags.size()) / capacity;
     }

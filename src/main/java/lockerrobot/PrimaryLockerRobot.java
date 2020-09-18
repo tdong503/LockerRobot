@@ -15,4 +15,9 @@ public class PrimaryLockerRobot extends LockerRobotBase {
         Locker locker = lockers.stream().filter(Locker::hasCapacity).findFirst().orElseThrow(() -> new NoCapacityException(this.getClass().getName()));
         return locker.saveBag(bag);
     }
+
+    @Override
+    public Types getType() {
+        return Types.M;
+    }
 }

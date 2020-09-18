@@ -8,4 +8,6 @@ public interface Storable {
     boolean hasCapacity();
 
     boolean isTicketContained(Ticket ticket);
+
+    Types getType();
 }

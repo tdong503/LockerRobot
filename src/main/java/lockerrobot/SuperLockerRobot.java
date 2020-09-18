@@ -16,4 +16,9 @@ public class SuperLockerRobot extends LockerRobotBase {
         Locker locker = lockers.stream().filter(Locker::hasCapacity).max(Comparator.comparingInt(Locker::freeCapacityRate)).orElseThrow(() -> new NoCapacityException(this.getClass().getName()));
         return locker.saveBag(bag);
     }
+
+    @Override
+    public Types getType() {
+        return Types.L;
+    }
 }
