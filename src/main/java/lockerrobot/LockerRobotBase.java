@@ -29,6 +29,6 @@ public abstract class LockerRobotBase implements Storable {
 
     @Override
     public boolean isTicketContained(Ticket ticket) {
-        return false;
+        return lockers.stream().anyMatch(l -> l.isTicketContained(ticket));
     }
 }

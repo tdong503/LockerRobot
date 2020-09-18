@@ -129,6 +129,20 @@ class LockerRobotManagerTests {
     }
 
     @Test
+    void should_get_corresponding_bag_when_pick_up_bag_given_a_PrimaryLockerRobot_and_a_valid_ticket_generated_by_PrimaryLockerRobot() {
+        Bag bag = new Bag(Types.M);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(ImmutableList.of(new Locker(1, Types.M)));
+
+        LockerRobotManager lockerRobotManager = new LockerRobotManager(ImmutableList.of(primaryLockerRobot));
+
+        Ticket ticket = lockerRobotManager.saveBag(bag);
+
+        Bag actual = lockerRobotManager.pickUpBag(ticket);
+
+        assertEquals(bag, actual);
+    }
+
+    @Test
     void should_not_get_bag_and_return_error_when_pick_up_bag_given_a_locker_and_a_PrimaryLockerRobot_and_a_SuperLockerRobot_and_a_fake_ticket() {
         Bag bag = new Bag(Types.M);
         Locker locker = new Locker(1, Types.S);
