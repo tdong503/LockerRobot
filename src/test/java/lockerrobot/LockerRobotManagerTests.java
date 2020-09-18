@@ -97,4 +97,19 @@ class LockerRobotManagerTests {
         assertEquals(Types.M, actual.getTicketType());
         assertEquals(bag, primaryLockerRobot.pickUpBag(actual));
     }
+
+    @Test
+    void should_save_bag_and_return_L_ticket_when_save_bag_given_a_L_bag_and_a_locker_and_a_PrimaryLockerRobot_and_a_SuperLockerRobot_and_all_has_capacity() {
+        Bag bag = new Bag(Types.L);
+        Locker locker = new Locker(1, Types.S);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(ImmutableList.of(new Locker(1, Types.M)));
+        SuperLockerRobot superLockerRobot = new SuperLockerRobot(ImmutableList.of(new Locker(1, Types.L)));
+        LockerRobotManager lockerRobotManager = new LockerRobotManager(ImmutableList.of(locker, primaryLockerRobot, superLockerRobot));
+
+        Ticket actual = lockerRobotManager.saveBag(bag);
+
+        assertNotNull(actual);
+        assertEquals(Types.L, actual.getTicketType());
+        assertEquals(bag, superLockerRobot.pickUpBag(actual));
+    }
 }
