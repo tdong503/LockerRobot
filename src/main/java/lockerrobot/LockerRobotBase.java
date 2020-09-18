@@ -1,6 +1,7 @@
 package lockerrobot;
 
 import lockerrobot.Exceptions.FakeTicketException;
+import lockerrobot.Exceptions.SetupNotMatchedException;
 import lockerrobot.Exceptions.TypeNotMatchedException;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public abstract class LockerRobotBase implements Storable {
     private final Types robotType;
 
     public LockerRobotBase(List<Locker> lockers, Types robotType) {
+        validateSetup(lockers, robotType);
         this.lockers = lockers;
         this.robotType = robotType;
     }
@@ -30,5 +32,14 @@ public abstract class LockerRobotBase implements Storable {
     @Override
     public boolean isTicketContained(Ticket ticket) {
         return lockers.stream().anyMatch(l -> l.isTicketContained(ticket));
+    }
+
+    private void validateSetup(List<Locker> lockers, Types robotType) {
+        for (Locker locker :
+                lockers) {
+            if (locker.getType() != robotType) {
+                throw new SetupNotMatchedException(this.getClass().getName());
+            }
+        }
     }
 }
