@@ -134,23 +134,17 @@
 31. Given 一个LockerRobotManager，并且管理一个Locker，一个由LockerRobotManager存包成功的S票据
     When LockerRobotManager取包
     Then 取包成功，并且是票据对应的包
-32. Given 一个LockerRobotManager，并且管理一个Locker, 一个伪造的S票据
-    When LockerRobotManager取包
-    Then 取包失败，提示无效票据
-33. Given 一个LockerRobotManager，并且管理一个PrimaryLockerRobot，PrimaryLockerRobot管理一个Locker，一个由LockerRobotManager存包生成的M票据
+32. Given 一个LockerRobotManager，并且管理一个PrimaryLockerRobot，PrimaryLockerRobot管理一个Locker，一个由LockerRobotManager存包生成的M票据
     When LockerRobotManager取包
     Then 取包成功，并且是票据对应的包
-34. Given 一个LockerRobotManager，并且管理一个PrimaryLockerRobot，PrimaryLockerRobot管理一个Locker，一个伪造的M票据
-    When LockerRobotManager取包
-    Then 取包失败，提示无效票据
-35. Given 一个LockerRobotManager，并且管理一个SuperLockerRobot，SuperLockerRobot管理一个Locker，一个由LockerRobotManager存包生成的L票据
+33. Given 一个LockerRobotManager，并且管理一个SuperLockerRobot，SuperLockerRobot管理一个Locker，一个由LockerRobotManager存包生成的L票据
     When LockerRobotManager取包
     Then 取包成功，并且是票据对应的包
-36. Given 一个LockerRobotManager，并且管理一个SuperLockerRobot，SuperLockerRobot管理一个Locker，一个伪造的L票据
+34. Given 一个LockerRobotManager，并且管理一个Locker，一个PrimaryLockerRobot，一个SuperLockerRobot，一个伪造的L票据
     When LockerRobotManager取包
     Then 取包失败，提示无效票据
     
-37. Given 一个LockerRobotManager，一个M的Locker
+35. Given 一个LockerRobotManager，一个M的Locker
     When 设置给LockerRobotManager
     Then 提示设置失败
 38. Given 一个LockerRobotManager，一个L的Locker
